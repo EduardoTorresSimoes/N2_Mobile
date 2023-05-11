@@ -2,7 +2,8 @@ import React from "react";
 import { View, StyleSheet, Text, Dimensions, Image, TouchableOpacity, TextInput } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-export const Login = () => {
+export const Cadastro = () => {
+
     const navigation = useNavigation();
 
     function mainPressed() {
@@ -12,20 +13,30 @@ export const Login = () => {
     return (
         <View style={styles.container}>
             <TouchableOpacity  onPress={mainPressed}><Image source={require('./icone-seta-esquerda.png')} style={styles.seta} /></TouchableOpacity>
-            <Text style={styles.titulo}>Login</Text>
+            <Text style={styles.titulo}>Cadastro</Text>
             <View>
                 <Text style={styles.campo}>Usuário</Text>
                 <Image source={require('./icone-usuario.png')} style={[styles.icone]}></Image>
                 <TextInput style={styles.conteudo}></TextInput>
                 <View style={styles.linha}></View>
-            
-                <Text style={[styles.campo, {top: 327}]}>Senha</Text>
-                <Image source={require('./icone-senha.png')} style={[styles.icone, {top: 354, width: 17, height: 18, left: 93}]}></Image>
-                <TextInput style={[styles.conteudo, {top: 355}]} secureTextEntry={true}></TextInput>
-                <View style={[styles.linha, {top: 383}]}></View>
+
+                <Text style={[styles.campo, {top: 277}]}>Email</Text>
+                <Image source={require('./icone_email.png')} style={[styles.icone, {top: 310, width: 20, height: 20, left: 93}]}></Image>
+                <TextInput style={[styles.conteudo, {top: 309}]}></TextInput>
+                <View style={[styles.linha, {top: 339}]}></View>
+
+                <Text style={[styles.campo, {top: 353, width: 93}]}>Telefone</Text>
+                <Image source={require('./icone-telefone.png')} style={[styles.icone, {top: 383, width: 20, height: 20, left: 93}]}></Image>
+                <TextInput style={[styles.conteudo, {top: 379}]}></TextInput>
+                <View style={[styles.linha, {top: 408}]}></View>
+
+                <Text style={[styles.campo, {top: 422}]}>Senha</Text>
+                <Image source={require('./icone-senha.png')} style={[styles.icone, {top: 449, width: 17, height: 18, left: 93}]}></Image>
+                <TextInput style={[styles.conteudo, {top: 449}]} secureTextEntry={true}></TextInput>
+                <View style={[styles.linha, {top: 478}]}></View>
             </View>
             <TouchableOpacity style={[styles.botao, {top: 541}]}>
-                <Text style={styles.conteudoBotao}>Login</Text>
+                <Text style={styles.conteudoBotao}>Cadastrar-se</Text>
             </TouchableOpacity>
         </View>
     )
@@ -48,9 +59,9 @@ const styles = StyleSheet.create({
     },
     titulo: {
         position: "absolute",
-        width: 126,
-        height: 67,
-        left: Dimensions.get('window').width/3,
+        width: 196,
+        height: 49,
+        left: Dimensions.get('window').width/3.8,
         top: 79,
         fontFamily: 'Roboto',
         fontStyle: 'normal',
@@ -64,7 +75,7 @@ const styles = StyleSheet.create({
         width: 82,
         height: 28,
         left: 93,
-        top: 254,
+        top: 210,
         fontFamily: 'Roboto',
         fontStyle: 'normal',
         fontWeight: '400',
@@ -77,7 +88,7 @@ const styles = StyleSheet.create({
         width: 180,
         height: 23,
         left: 116,
-        top: 284,
+        top: 240,
         fontFamily: 'Roboto',
         fontStyle: 'normal',
         fontWeight: '400',
@@ -90,14 +101,14 @@ const styles = StyleSheet.create({
         width: 28,
         height: 28,
         left: 88,
-        top: 279,
+        top: 235,
       },
       linha: {
         position: "absolute",
         width: 210,
         height: 1,
         left: 94,
-        top: 312,
+        top: 268,
         borderWidth: 1,
         borderColor: '#E91E63',
       },
