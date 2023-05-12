@@ -21,17 +21,17 @@ export const Cadastro = () => {
                 <View style={styles.linha}></View>
 
                 <Text style={[styles.campo, {top: 277}]}>Email</Text>
-                <Image source={require('./icone_email.png')} style={[styles.icone, {top: 310, width: 20, height: 20, left: 93}]}></Image>
+                <Image source={require('./icone_email.png')} style={[styles.icone, {top: 310, width: 20, height: 20, left: Dimensions.get('window').width/5}]}></Image>
                 <TextInput style={[styles.conteudo, {top: 309}]}></TextInput>
                 <View style={[styles.linha, {top: 339}]}></View>
 
                 <Text style={[styles.campo, {top: 353, width: 93}]}>Telefone</Text>
-                <Image source={require('./icone-telefone.png')} style={[styles.icone, {top: 383, width: 20, height: 20, left: 93}]}></Image>
+                <Image source={require('./icone-telefone.png')} style={[styles.icone, {top: 383, width: 20, height: 20, left: Dimensions.get('window').width/5}]}></Image>
                 <TextInput style={[styles.conteudo, {top: 379}]}></TextInput>
                 <View style={[styles.linha, {top: 408}]}></View>
 
                 <Text style={[styles.campo, {top: 422}]}>Senha</Text>
-                <Image source={require('./icone-senha.png')} style={[styles.icone, {top: 449, width: 17, height: 18, left: 93}]}></Image>
+                <Image source={require('./icone-senha.png')} style={[styles.icone, {top: 449, width: 17, height: 18, left: Dimensions.get('window').width/5}]}></Image>
                 <TextInput style={[styles.conteudo, {top: 449}]} secureTextEntry={true}></TextInput>
                 <View style={[styles.linha, {top: 478}]}></View>
             </View>
@@ -45,23 +45,22 @@ export const Cadastro = () => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      gap: 5,
       position: "absolute",
       width: Dimensions.get('window').width,
       height: Dimensions.get('window').height,
       backgroundColor: "#101215",
     },
     seta: {
+      flex: 1,
       position: 'absolute',
       width: 72,
       height: 72,
       top: 6,
     },
     titulo: {
+        flex: 1,
         position: "absolute",
-        width: 196,
-        height: 49,
-        left: Dimensions.get('window').width/3.8,
+        left: Dimensions.get('window').width/4.4,
         top: 79,
         fontFamily: 'Roboto',
         fontStyle: 'normal',
@@ -71,10 +70,11 @@ const styles = StyleSheet.create({
         color: '#E91E63',
       },
       campo: {
+        flex: 1,
         position: 'absolute',
         width: 82,
         height: 28,
-        left: 93,
+        left: Dimensions.get('window').width/5,
         top: 210,
         fontFamily: 'Roboto',
         fontStyle: 'normal',
@@ -84,10 +84,11 @@ const styles = StyleSheet.create({
         color: '#E91E63',
       },
       conteudo: {
+        flex: 1,
         position: 'absolute',
-        width: 180,
+        width: 190,
         height: 23,
-        left: 116,
+        left: Dimensions.get('window').width/3.8,
         top: 240,
         fontFamily: 'Roboto',
         fontStyle: 'normal',
@@ -97,17 +98,19 @@ const styles = StyleSheet.create({
         color: '#FF9E64',
       },
       icone: {
+        flex: 1,
         position: 'absolute',
         width: 28,
         height: 28,
-        left: 88,
+        left: Dimensions.get('window').width/5.4,
         top: 235,
       },
       linha: {
+        flex: 1,
         position: "absolute",
-        width: 210,
+        width: 216,
         height: 1,
-        left: 94,
+        left: Dimensions.get('window').width/5,
         top: 268,
         borderWidth: 1,
         borderColor: '#E91E63',
@@ -116,7 +119,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: 194,
         height: 65,
-        left: Dimensions.get('window').width/4,
+        left: Dimensions.get('window').width/4.5,
         top: 465,
         backgroundColor: '#161B22',
         justifyContent: 'center',
@@ -130,7 +133,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.4,
         shadowRadius: 0,
         borderRadius: 30,
-        elevation: 6,
+        elevation: 6
       },
       conteudoBotao: {
         fontFamily: 'Roboto',

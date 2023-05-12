@@ -32,17 +32,15 @@ export const Main = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    gap: 5,
     position: "absolute",
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
     backgroundColor: "#101215",
   },
   titulo: {
+    flex: 1,
     position: "absolute",
-    width: 247,
-    height: 50,
-    left: 360/5,
+    left: Dimensions.get('window').width/5.3,
     top: 85,
     fontFamily: 'Roboto',
     fontStyle: 'normal',
@@ -52,10 +50,9 @@ const styles = StyleSheet.create({
     color: '#E91E63',
   },
   subtitulo: {
+    flex: 1,
     position: "absolute",
-    width: 119,
-    height: 28,
-    left: 360/3,
+    left: Dimensions.get('window').width/3,
     top: 134,
     fontFamily: 'Roboto',
     fontStyle: 'normal',
@@ -65,6 +62,7 @@ const styles = StyleSheet.create({
     color: '#E91E63',
   },
   icone:{
+    flex: 1,
     position: "absolute",
     width: 161,
     height: 161,
@@ -84,7 +82,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 194,
     height: 65,
-    left: Dimensions.get('window').width/4,
+    left: Dimensions.get('window').width/4.5,
     top: 465,
     backgroundColor: '#161B22',
     justifyContent: 'center',
@@ -98,7 +96,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 0,
     borderRadius: 30,
-    elevation: 6,
+    elevation: 6
   },
   conteudoBotao: {
     fontFamily: 'Roboto',
