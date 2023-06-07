@@ -1,42 +1,88 @@
 import React from "react";
 import { View, StyleSheet, Text, Dimensions, Image, TouchableOpacity, TextInput } from "react-native";
+import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { gravarUsuario } from '/./API/api';
 
 export const Cadastro = () => {
 
     const navigation = useNavigation();
 
+    const [nome, setNome] = useState();
+    const [email, setEmail] = useState();
+    const [telefone, setTelefone] = useState();
+    const [senha, setSenha] = useState();
+
+    function nomeGravar(nome){
+      setNome(nome);
+    }
+
+    function emailGravar(email){
+      setEmail(email);
+    }
+
+    function telefoneGravar(telefone){
+      setTelefone(telefone)
+    }
+
+    function senhaGravar(senha){
+      setSenha(senha)
+    }
+
+    const salvarUsuario = async () => {
+      gravarUsuario(nome, email, telefone, senha)
+      loginPressed()
+  }
+
+    function loginPressed(){
+        navigation.navigate('Login');
+    }
+    
     function mainPressed() {
       navigation.navigate("Main");
     }
     
     return (
         <View style={styles.container}>
-            <TouchableOpacity  onPress={mainPressed}><Image source={require('./icone-seta-esquerda.png')} style={styles.seta} /></TouchableOpacity>
+            <TouchableOpacity  onPress={mainPressed}><Image source={require('/./assets/icone-seta-esquerda.png')} style={styles.seta} /></TouchableOpacity>
             <Text style={styles.titulo}>Cadastro</Text>
             <View>
-                <Text style={styles.campo}>Usuário</Text>
-                <Image source={require('./icone-usuario.png')} style={[styles.icone]}></Image>
-                <TextInput style={styles.conteudo}></TextInput>
+                <Text style={styles.campo}>Nome</Text>
+                <Image source={require('/./assets/icone-usuario.png')} style={[styles.icone]}></Image>
+                <TextInput 
+                    style={styles.conteudo}
+                    onChangeText={nomeGravar}    
+                ></TextInput>
                 <View style={styles.linha}></View>
 
                 <Text style={[styles.campo, {top: 277}]}>Email</Text>
-                <Image source={require('./icone_email.png')} style={[styles.icone, {top: 310, width: 20, height: 20, left: Dimensions.get('window').width/5}]}></Image>
-                <TextInput style={[styles.conteudo, {top: 309}]}></TextInput>
+                <Image source={require('/./assets/icone_email.png')} style={[styles.icone, {top: 310, width: 20, height: 20}]}></Image>
+                <TextInput 
+                    style={[styles.conteudo, {top: 309}]}
+                    onChangeText={emailGravar}
+                ></TextInput>
                 <View style={[styles.linha, {top: 339}]}></View>
 
                 <Text style={[styles.campo, {top: 353, width: 93}]}>Telefone</Text>
-                <Image source={require('./icone-telefone.png')} style={[styles.icone, {top: 383, width: 20, height: 20, left: Dimensions.get('window').width/5}]}></Image>
-                <TextInput style={[styles.conteudo, {top: 379}]}></TextInput>
+                <Image source={require('/./assets/icone-telefone.png')} style={[styles.icone, {top: 383, width: 20, height: 20}]}></Image>
+                <TextInput 
+                    style={[styles.conteudo, {top: 379}]}
+                    onChangeText={telefoneGravar}
+                ></TextInput>
                 <View style={[styles.linha, {top: 408}]}></View>
 
                 <Text style={[styles.campo, {top: 422}]}>Senha</Text>
-                <Image source={require('./icone-senha.png')} style={[styles.icone, {top: 449, width: 17, height: 18, left: Dimensions.get('window').width/5}]}></Image>
-                <TextInput style={[styles.conteudo, {top: 449}]} secureTextEntry={true}></TextInput>
+                <Image source={require('/./assets/icone-senha.png')} style={[styles.icone, {top: 449, width: 17, height: 18}]}></Image>
+                <TextInput 
+                    style={[styles.conteudo, {top: 449}]} secureTextEntry={true}
+                    onChangeText={senhaGravar}
+                ></TextInput>
                 <View style={[styles.linha, {top: 478}]}></View>
             </View>
             <TouchableOpacity style={[styles.botao, {top: 541}]}>
-                <Text style={styles.conteudoBotao}>Cadastrar-se</Text>
+                <Text style={styles.conteudoBotao}
+                    onPress={salvarUsuario}
+                >Cadastrar-se</Text>
             </TouchableOpacity>
         </View>
     )
@@ -102,7 +148,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: 28,
         height: 28,
-        left: Dimensions.get('window').width/5.4,
+        left: Dimensions.get('window').width/5,
         top: 235,
       },
       linha: {

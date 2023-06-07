@@ -18,7 +18,7 @@ export const Main = () => {
     <View style={styles.container}>
       <Text style={styles.titulo}>"Seu app Aqui"</Text>
       <Text style={styles.subtitulo}>Bem Vindo!</Text>
-      <Image source={require('./icone-app.png')} style={styles.icone} />
+      <Image source={require('/./assets/icone-app.png')} style={styles.icone} />
       <TouchableOpacity onPress={loginPressed} style={styles.botao}>
         <Text style={styles.conteudoBotao}>Login</Text>
       </TouchableOpacity>

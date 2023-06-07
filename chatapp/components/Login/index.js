@@ -1,31 +1,75 @@
 import React from "react";
 import { View, StyleSheet, Text, Dimensions, Image, TouchableOpacity, TextInput } from "react-native";
+import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { logarUsuario } from '/./API/api';
 
-export const Login = () => {
+export const Login = () => {  
     const navigation = useNavigation();
+
+    const [nome, setNome] = useState();
+    const [senha, setSenha] = useState();
+
+    function nomeGravar(nome){
+      setNome(nome);
+    }
+
+    function senhaGravar(senha){
+      setSenha(senha);
+    }
 
     function mainPressed() {
       navigation.navigate("Main");
     }
+
+    async function logar(){
+      return logarUsuario(nome, senha).then(data => {
+        if (data) 
+            return Promise.resolve(data);
+        else 
+            return Promise.resolve(null);
+      }).catch((err) => {
+        console.log(err);
+      })
+    }
     
+    useEffect(() => {
+      (async () => {
+          let dadosUsuario
+          const dados = await AsyncStorage.getItem('usuario')
+          if (dados) dadosUsuario = JSON.parse(dados)
+          else return
+          navigation.navigate("Mensagens", dadosUsuario)
+      })()
+    }, [])
+
     return (
         <View style={styles.container}>
-            <TouchableOpacity  onPress={mainPressed}><Image source={require('./icone-seta-esquerda.png')} style={styles.seta} /></TouchableOpacity>
+            <TouchableOpacity  onPress={mainPressed}><Image source={require('/./assets/icone-seta-esquerda.png')} style={styles.seta} /></TouchableOpacity>
             <Text style={styles.titulo}>Login</Text>
             <View>
-                <Text style={styles.campo}>Usuário</Text>
-                <Image source={require('./icone-usuario.png')} style={[styles.icone]}></Image>
-                <TextInput style={styles.conteudo}></TextInput>
+                <Text style={styles.campo}>Nome</Text>
+                <Image source={require('/./assets/icone-usuario.png')} style={[styles.icone]}></Image>
+                <TextInput 
+                    style={styles.conteudo}
+                    onChangeText={nomeGravar}  
+                ></TextInput>
                 <View style={styles.linha}></View>
             
                 <Text style={[styles.campo, {top: 327}]}>Senha</Text>
-                <Image source={require('./icone-senha.png')} style={[styles.icone, {top: 354, width: 17, height: 18, left: Dimensions.get('window').width/5}]}></Image>
-                <TextInput style={[styles.conteudo, {top: 355}]} secureTextEntry={true}></TextInput>
+                <Image source={require('/./assets/icone-senha.png')} style={[styles.icone, {top: 354, width: 17, height: 18}]}></Image>
+                <TextInput 
+                    style={[styles.conteudo, {top: 355}]} secureTextEntry={true}
+                    onChangeText={senhaGravar}
+                ></TextInput>
                 <View style={[styles.linha, {top: 383}]}></View>
             </View>
             <TouchableOpacity style={[styles.botao, {top: 541}]}>
-                <Text style={styles.conteudoBotao}>Login</Text>
+                <Text 
+                    style={styles.conteudoBotao}
+                    onPress={logar}
+                >Login</Text>
             </TouchableOpacity>
         </View>
     )
@@ -49,7 +93,7 @@ const styles = StyleSheet.create({
   titulo: {
       flex: 1,
       position: "absolute",
-      left: Dimensions.get('window').width/3,
+      left: Dimensions.get('window').width/4,
       top: 79,
       fontFamily: 'Roboto',
       fontStyle: 'normal',
@@ -91,7 +135,7 @@ const styles = StyleSheet.create({
       position: 'absolute',
       width: 28,
       height: 28,
-      left: Dimensions.get('window').width/5.4,
+      left: Dimensions.get('window').width/5,
       top: 279,
     },
     linha: {

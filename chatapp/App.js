@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";;
 import { Main } from "./components/Main";
 import { Login } from "./components/Login";
 import { Cadastro } from "./components/Cadastro";
+import { Mensagens } from './components/Mensagens';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -21,6 +22,7 @@ export default function App() {
           <Stack.Screen name="Main" component={Main} options={{ tabBarVisible: false }}/>
           <Stack.Screen name="Login" component={Login} options={{ tabBarVisible: false }}/>
           <Stack.Screen name="Cadastro" component={Cadastro} options={{ tabBarVisible: false }}/>
+          <Stack.Screen name="Mensagens" component={Mensagens} options={{ tabBarVisible: false }}/>
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
