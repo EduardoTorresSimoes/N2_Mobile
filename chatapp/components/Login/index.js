@@ -3,16 +3,16 @@ import { View, StyleSheet, Text, Dimensions, Image, TouchableOpacity, TextInput 
 import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { logarUsuario } from '/./API/api';
+import { logarUsuario } from '../../API/api';
 
 export const Login = () => {  
     const navigation = useNavigation();
 
-    const [nome, setNome] = useState();
+    const [telefone, setTelefone] = useState();
     const [senha, setSenha] = useState();
 
-    function nomeGravar(nome){
-      setNome(nome);
+    function telefoneGravar(telefone){
+      setTelefone(telefone);
     }
 
     function senhaGravar(senha){
@@ -24,9 +24,11 @@ export const Login = () => {
     }
 
     async function logar(){
-      return logarUsuario(nome, senha).then(data => {
-        if (data) 
+      return logarUsuario(telefone, senha).then(data => {
+        if (data){
+            navigation.navigate("Mensagens")
             return Promise.resolve(data);
+        } 
         else 
             return Promise.resolve(null);
       }).catch((err) => {
@@ -46,19 +48,19 @@ export const Login = () => {
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity  onPress={mainPressed}><Image source={require('/./assets/icone-seta-esquerda.png')} style={styles.seta} /></TouchableOpacity>
+            <TouchableOpacity  onPress={mainPressed}><Image source={require('../../assets/icone-seta-esquerda.png')} style={styles.seta} /></TouchableOpacity>
             <Text style={styles.titulo}>Login</Text>
             <View>
                 <Text style={styles.campo}>Nome</Text>
-                <Image source={require('/./assets/icone-usuario.png')} style={[styles.icone]}></Image>
+                <Image source={require('../../assets/icone-usuario.png')} style={[styles.icone]}></Image>
                 <TextInput 
                     style={styles.conteudo}
-                    onChangeText={nomeGravar}  
+                    onChangeText={telefoneGravar}  
                 ></TextInput>
                 <View style={styles.linha}></View>
             
                 <Text style={[styles.campo, {top: 327}]}>Senha</Text>
-                <Image source={require('/./assets/icone-senha.png')} style={[styles.icone, {top: 354, width: 17, height: 18}]}></Image>
+                <Image source={require('../../assets/icone-senha.png')} style={[styles.icone, {top: 354, width: 17, height: 18}]}></Image>
                 <TextInput 
                     style={[styles.conteudo, {top: 355}]} secureTextEntry={true}
                     onChangeText={senhaGravar}

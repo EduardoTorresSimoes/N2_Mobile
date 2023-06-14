@@ -1,6 +1,7 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from "axios";
 
-const ip = 'http://192.168.0.139:8080'
+const ip = 'http://192.168.15.5:8080'
 
 export const gravarUsuario = (nome, email, telefone, senha) => {
     const item = {
@@ -21,10 +22,20 @@ export const gravarUsuario = (nome, email, telefone, senha) => {
     
 }
 
-export const logarUsuario = async (nome, senha) => {
+    const saveUserData = async (data) => {
+        await AsyncStorage.setItem("usuario", JSON.stringify(data)).catch((err) => {
+        throw err;
+        });
+    };
+
+
+export const logarUsuario = async (telefone, senha) => {
     try {
-        const { data: response } = await axios.get(`${ip}/user/${nome}/${senha}`)
+        const { data: response } = await axios.get(`${ip}/user/${telefone}/${senha}`)
         console.log(response)
+
+        await saveUserData(response);
+
         return response
     }catch (err){
         console.log(err)

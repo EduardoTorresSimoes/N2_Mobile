@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet, Text, Dimensions, Image, TouchableOpacity, TextInput } from "react-native";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { gravarUsuario } from '/./API/api';
+import { gravarUsuario } from '../../API/api';
 
 export const Cadastro = () => {
 
@@ -44,11 +44,11 @@ export const Cadastro = () => {
     
     return (
         <View style={styles.container}>
-            <TouchableOpacity  onPress={mainPressed}><Image source={require('/./assets/icone-seta-esquerda.png')} style={styles.seta} /></TouchableOpacity>
+            <TouchableOpacity  onPress={mainPressed}><Image source={require('../../assets/icone-seta-esquerda.png')} style={styles.seta} /></TouchableOpacity>
             <Text style={styles.titulo}>Cadastro</Text>
             <View>
                 <Text style={styles.campo}>Nome</Text>
-                <Image source={require('/./assets/icone-usuario.png')} style={[styles.icone]}></Image>
+                <Image source={require('../../assets/icone-usuario.png')} style={[styles.icone]}></Image>
                 <TextInput 
                     style={styles.conteudo}
                     onChangeText={nomeGravar}    
@@ -56,7 +56,7 @@ export const Cadastro = () => {
                 <View style={styles.linha}></View>
 
                 <Text style={[styles.campo, {top: 277}]}>Email</Text>
-                <Image source={require('/./assets/icone_email.png')} style={[styles.icone, {top: 310, width: 20, height: 20}]}></Image>
+                <Image source={require('../../assets/icone_email.png')} style={[styles.icone, {top: 310, width: 20, height: 20}]}></Image>
                 <TextInput 
                     style={[styles.conteudo, {top: 309}]}
                     onChangeText={emailGravar}
@@ -64,7 +64,7 @@ export const Cadastro = () => {
                 <View style={[styles.linha, {top: 339}]}></View>
 
                 <Text style={[styles.campo, {top: 353, width: 93}]}>Telefone</Text>
-                <Image source={require('/./assets/icone-telefone.png')} style={[styles.icone, {top: 383, width: 20, height: 20}]}></Image>
+                <Image source={require('../../assets/icone-telefone.png')} style={[styles.icone, {top: 383, width: 20, height: 20}]}></Image>
                 <TextInput 
                     style={[styles.conteudo, {top: 379}]}
                     onChangeText={telefoneGravar}
@@ -72,7 +72,7 @@ export const Cadastro = () => {
                 <View style={[styles.linha, {top: 408}]}></View>
 
                 <Text style={[styles.campo, {top: 422}]}>Senha</Text>
-                <Image source={require('/./assets/icone-senha.png')} style={[styles.icone, {top: 449, width: 17, height: 18}]}></Image>
+                <Image source={require('../../assets/icone-senha.png')} style={[styles.icone, {top: 449, width: 17, height: 18}]}></Image>
                 <TextInput 
                     style={[styles.conteudo, {top: 449}]} secureTextEntry={true}
                     onChangeText={senhaGravar}

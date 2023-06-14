@@ -1,15 +1,8 @@
 import React from "react";
 import { View, StyleSheet, Text, Dimensions, Image, TouchableOpacity, TextInput } from "react-native";
+import { useState, useEffect } from "react";
 
 export const Mensagens = ({ route }) => {
-    
-    useEffect(() => {
-        usuario = route.params
-        salvarUsuario(usuario)
-        if(usuario){
-            setNome(usuario.nome)
-        }
-    })
 
     return (
         <View style={styles.container}>
