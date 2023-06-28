@@ -26,7 +26,7 @@ export const Login = () => {
     async function logar(){
       return logarUsuario(telefone, senha).then(data => {
         if (data){
-            navigation.navigate("Mensagens")
+            navigation.navigate("Contatos")
             return Promise.resolve(data);
         } 
         else 
@@ -42,7 +42,7 @@ export const Login = () => {
           const dados = await AsyncStorage.getItem('usuario')
           if (dados) dadosUsuario = JSON.parse(dados)
           else return
-          navigation.navigate("Mensagens", dadosUsuario)
+          navigation.navigate("Contatos", dadosUsuario)
       })()
     }, [])
 
